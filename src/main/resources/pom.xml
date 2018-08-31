@@ -8,5 +8,12 @@
     <artifactId>football</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>football</groupId>
+            <artifactId>football</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
