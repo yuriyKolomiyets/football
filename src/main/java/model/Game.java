@@ -16,7 +16,12 @@ public class Game extends IdEntity {
     @Column(name = "away_team", nullable = false)
     private Team awayTeam;
 
+    @Column
     private Score score;
+
+    @ManyToOne (cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "championship_id", referencedColumnName = "id")
+    private Championship championship;
 
     public Game() {
     }
@@ -58,5 +63,13 @@ public class Game extends IdEntity {
 
     public void setScore(Score score) {
         this.score = score;
+    }
+
+    public Championship getChampionship() {
+        return championship;
+    }
+
+    public void setChampionship(Championship championship) {
+        this.championship = championship;
     }
 }

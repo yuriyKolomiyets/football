@@ -1,9 +1,6 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -16,10 +13,15 @@ public class Team extends IdEntity {
     @Column
     private String city;
 
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "coach_id", referencedColumnName = "id")
     private Coach coach;
 
+    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
     private List <Player> players;
 
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "championship_id", referencedColumnName = "id")
     private Championship championship;
 
     public Team() {

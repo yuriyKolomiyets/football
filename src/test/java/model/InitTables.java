@@ -8,7 +8,8 @@ import javax.persistence.Persistence;
 public class InitTables {
 
     public static void main(String[] args) {
-        Player player = new Player("A", "B", 1, 1, 2, 3, new Team());
+        Player player = new Player("A", "B", Coach.Nationality.GERMAN, 1, 1, 2,
+                3, new Team());
 
         EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("hibernate-init");
 

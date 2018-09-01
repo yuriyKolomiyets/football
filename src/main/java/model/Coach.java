@@ -34,9 +34,10 @@ public class Coach extends IdEntity {
     public Coach() {
     }
 
-    public Coach(String firstName, String lastName, Team team) {
+    public Coach(String firstName, String lastName, Nationality nationality, Team team) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.nationality = nationality;
         this.team = team;
     }
 
@@ -62,5 +63,13 @@ public class Coach extends IdEntity {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public Nationality getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(Nationality nationality) {
+        this.nationality = nationality;
     }
 }

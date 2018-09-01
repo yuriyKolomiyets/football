@@ -32,21 +32,27 @@ public class Player extends IdEntity{
 
     @Column
     private int age;
+
     @Column
     private int number;
+
     @Column
     private int height;
+
     @Column
     private int weight;
 
+    @ManyToOne (cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "team_id", referencedColumnName = "id")
     private Team team;
 
     public Player() {
     }
 
-    public Player(String firstName, String lastName, int age, int number, int height, int weight, Team team) {
+    public Player(String firstName, String lastName, Coach.Nationality nationality, int age, int number, int height, int weight, Team team) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.nationality = nationality;
         this.age = age;
         this.number = number;
         this.height = height;
@@ -108,5 +114,13 @@ public class Player extends IdEntity{
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public Coach.Nationality getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(Coach.Nationality nationality) {
+        this.nationality = nationality;
     }
 }

@@ -1,9 +1,6 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -13,6 +10,7 @@ public class Championship extends IdEntity {
     @Column
     private String country;
 
+    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
     private List <Game> games;
 
     public Championship() {
