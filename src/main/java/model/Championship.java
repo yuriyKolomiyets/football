@@ -8,10 +8,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "championships")
-public class Championship {
+public class Championship extends IdEntity {
 
-    @Id
-    private String id;
     @Column
     private String country;
 
@@ -23,14 +21,6 @@ public class Championship {
     public Championship(String country, List<Game> games) {
         this.country = country;
         this.games = games;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getCountry() {

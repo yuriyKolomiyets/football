@@ -5,16 +5,17 @@ import java.util.Date;
 
 @Entity
 @Table(name = "games")
-public class Game {
+public class Game extends IdEntity {
 
-    @Id
-    private String id;
     @Temporal(TemporalType.DATE)
     private Date date;
+
     @Column(name = "home_team", nullable = false)
     private Team homeTeam;
+
     @Column(name = "away_team", nullable = false)
     private Team awayTeam;
+
     private Score score;
 
     public Game() {
@@ -25,14 +26,6 @@ public class Game {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.score = score;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public Date getDate() {

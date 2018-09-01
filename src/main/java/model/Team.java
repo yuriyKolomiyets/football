@@ -8,12 +8,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "teams")
-public class Team {
+public class Team extends IdEntity {
 
-    @Id
-    private String id;
     @Column
     private String name;
+
     @Column
     private String city;
 
@@ -32,14 +31,6 @@ public class Team {
         this.coach = coach;
         this.players = players;
         this.championship = championship;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
