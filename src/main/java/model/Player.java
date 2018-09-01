@@ -5,7 +5,21 @@ public class Player {
     private String id;
     private String firstName;
     private String lastName;
-    private enum nationality {one, two, three};
+
+    public enum Nationality {
+        UKRAINIAN(1),
+        GERMAN(2),
+        PORTUGAL(3);
+
+        private Integer index;
+
+        Nationality(Integer index) {
+            this.index = index;
+        }
+    }
+
+    ;
+
     private int age;
     private int number;
     private int height;
