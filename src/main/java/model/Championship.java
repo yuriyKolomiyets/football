@@ -1,11 +1,20 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.List;
 
+@Entity
+@Table(name = "championships")
 public class Championship {
 
+    @Id
     private String id;
+    @Column
     private String country;
+
     private List <Game> games;
 
     public Championship() {

@@ -1,9 +1,19 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "players")
 public class Player {
 
+    @Id
     private String id;
+    @Column(name = "first_name", nullable = false)
     private String firstName;
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     public enum Nationality {
@@ -20,10 +30,15 @@ public class Player {
 
     ;
 
+    @Column
     private int age;
+    @Column
     private int number;
+    @Column
     private int height;
+    @Column
     private int weight;
+
     private Team team;
 
     public Player() {
