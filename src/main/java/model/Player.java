@@ -43,7 +43,7 @@ public class Player extends IdEntity{
     private int weight;
 
     @ManyToOne (cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "team_id", referencedColumnName = "id")
+    @JoinColumn(name = "team_id")
     private Team team;
 
     public Player() {

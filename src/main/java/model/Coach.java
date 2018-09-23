@@ -3,7 +3,7 @@ package model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "coachs")
+@Table(name = "coaches")
 public class Coach extends IdEntity {
 
     @Column(name = "first_name", nullable = false)
@@ -28,7 +28,8 @@ public class Coach extends IdEntity {
         }
     }
 
-    ;
+    @OneToOne(mappedBy = "coach")
+    @JoinColumn (name = "team")
     private Team team;
 
     public Coach() {

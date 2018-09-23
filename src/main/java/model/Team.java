@@ -1,7 +1,7 @@
 package model;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "teams")
@@ -13,21 +13,20 @@ public class Team extends IdEntity {
     @Column
     private String city;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "coach_id", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "coach")
     private Coach coach;
 
     @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
-    private List <Player> players;
+    private Set <Player> players;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "championship_id", referencedColumnName = "id")
     private Championship championship;
 
     public Team() {
     }
 
-    public Team(String name, String city, Coach coach, List<Player> players, Championship championship) {
+    public Team(String name, String city, Coach coach, Set<Player> players, Championship championship) {
         this.name = name;
         this.city = city;
         this.coach = coach;
@@ -59,11 +58,11 @@ public class Team extends IdEntity {
         this.coach = coach;
     }
 
-    public List<Player> getPlayers() {
+    public Set<Player> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayers(Set<Player> players) {
         this.players = players;
     }
 

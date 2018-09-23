@@ -10,17 +10,19 @@ public class Game extends IdEntity {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @Column(name = "home_team", nullable = false)
+    @ManyToOne
+    @JoinColumn (name = "home_team")
     private Team homeTeam;
 
-    @Column(name = "away_team", nullable = false)
+    @ManyToOne
+    @JoinColumn (name = "away_team")
     private Team awayTeam;
 
-    @Column
+    @Embedded
     private Score score;
 
     @ManyToOne (cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "championship_id", referencedColumnName = "id")
+    @JoinColumn(name = "championship")
     private Championship championship;
 
     public Game() {
@@ -71,5 +73,35 @@ public class Game extends IdEntity {
 
     public void setChampionship(Championship championship) {
         this.championship = championship;
+    }
+
+    @Embeddable
+    private static class Score{
+        private Integer homeTeamScore;
+        private Integer awayTeamScore;
+
+        public Score() {
+        }
+
+        public Score(Integer homeTeamScore, Integer awayTeamScore) {
+            this.homeTeamScore = homeTeamScore;
+            this.awayTeamScore = awayTeamScore;
+        }
+
+        public Integer getHomeTeamScore() {
+            return homeTeamScore;
+        }
+
+        public void setHomeTeamScore(Integer homeTeamScore) {
+            this.homeTeamScore = homeTeamScore;
+        }
+
+        public Integer getAwayTeamScore() {
+            return awayTeamScore;
+        }
+
+        public void setAwayTeamScore(Integer awayTeamScore) {
+            this.awayTeamScore = awayTeamScore;
+        }
     }
 }

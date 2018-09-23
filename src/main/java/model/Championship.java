@@ -1,7 +1,7 @@
 package model;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "championships")
@@ -10,13 +10,13 @@ public class Championship extends IdEntity {
     @Column
     private String country;
 
-    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
-    private List <Game> games;
+    @OneToMany(mappedBy = "championship", fetch = FetchType.EAGER)
+    private Set <Game> games;
 
     public Championship() {
     }
 
-    public Championship(String country, List<Game> games) {
+    public Championship(String country, Set<Game> games) {
         this.country = country;
         this.games = games;
     }
@@ -29,11 +29,11 @@ public class Championship extends IdEntity {
         this.country = country;
     }
 
-    public List<Game> getGames() {
+    public Set<Game> getGames() {
         return games;
     }
 
-    public void setGames(List<Game> games) {
+    public void setGames(Set<Game> games) {
         this.games = games;
     }
 }
