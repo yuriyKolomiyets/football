@@ -33,6 +33,7 @@ public class Game {
     }
 
     public Game(Date date, Team homeTeam, Team awayTeam, Score score) {
+        this.id = UUID.randomUUID().toString();
         this.date = date;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;

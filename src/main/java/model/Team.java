@@ -31,6 +31,7 @@ public class Team {
     }
 
     public Team(String name, String city, Coach coach, Set<Player> players, Championship championship) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.city = city;
         this.coach = coach;

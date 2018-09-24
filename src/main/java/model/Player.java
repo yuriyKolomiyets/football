@@ -62,6 +62,7 @@ public class Player {
         this.height = height;
         this.weight = weight;
         this.team = team;
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getId() {

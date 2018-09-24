@@ -40,6 +40,7 @@ public class Coach {
     }
 
     public Coach(String firstName, String lastName, Nationality nationality, Team team) {
+        this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.nationality = nationality;

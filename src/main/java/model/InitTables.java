@@ -10,15 +10,15 @@ import java.util.UUID;
 public class InitTables {
 
     public static void main(String[] args) {
-        /*Player player =
-                new Player("A", "B", Coach.Nationality.GERMAN, 1, 1, 2,
-                3,
-                        new Team("Dynamo", "Kyiv", new Coach("Oleg", "Oleg",
-                        Coach.Nationality.GERMAN, null),
-                        new HashSet<Player>(), new Championship("Ukr", new HashSet<Game>())));*/
 
         Championship ukraine = new Championship("Ukraine", new HashSet<Game>());
 
+        Player player =
+                new Player("A", "B", Coach.Nationality.GERMAN, 1, 1, 2,
+                        3,
+                        new Team("Dynamo", "Kyiv", new Coach("Oleg", "Oleg",
+                                Coach.Nationality.GERMAN, null),
+                                new HashSet<Player>(), ukraine));
         EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("hibernate-init");
 
         EntityManager manager = managerFactory.createEntityManager();
@@ -26,7 +26,7 @@ public class InitTables {
 
         try {
             transaction.begin();
-            manager.persist(ukraine);
+            manager.persist(player);
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
