@@ -2,10 +2,14 @@ package model;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "teams")
-public class Team extends IdEntity {
+public class Team {
+
+    @Id
+    private String id;
 
     @Column
     private String name;
@@ -32,6 +36,14 @@ public class Team extends IdEntity {
         this.coach = coach;
         this.players = players;
         this.championship = championship;
+    }
+
+    public String getId() {
+        return UUID.randomUUID().toString();
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

@@ -2,10 +2,14 @@ package model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "games")
-public class Game extends IdEntity {
+public class Game {
+
+    @Id
+    private String id;
 
     @Temporal(TemporalType.DATE)
     private Date date;
@@ -33,6 +37,14 @@ public class Game extends IdEntity {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.score = score;
+    }
+
+    public String getId() {
+        return UUID.randomUUID().toString();
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Date getDate() {
